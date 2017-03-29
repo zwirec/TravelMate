@@ -2,11 +2,15 @@ CREATE DATABASE IF NOT EXISTS travelmate;
 
 START TRANSACTION;
 
-CREATE USER IF NOT EXISTS tm_connect@'localhost' IDENTIFIED BY '$5E0sA%ra5t*0R92';
-GRANT ALL ON travelmate.* TO `tm_connect@'localhost'` IDENTIFIED BY '$5E0sA%ra5t*0R92';;
+CREATE USER IF NOT EXISTS tm_connect@'localhost'
+  IDENTIFIED BY '$5E0sA%ra5t*0R92';
+GRANT ALL ON travelmate.* TO `tm_connect@'localhost'`
+IDENTIFIED BY '$5E0sA%ra5t*0R92';
 
-CREATE USER IF NOT EXISTS tm_connect@'%' IDENTIFIED BY '$5E0sA%ra5t*0R92';;
-GRANT ALL ON travelmate.* TO `tm_connect@'%'` IDENTIFIED BY '$5E0sA%ra5t*0R92';;
+CREATE USER IF NOT EXISTS tm_connect@'%'
+  IDENTIFIED BY '$5E0sA%ra5t*0R92';
+GRANT ALL ON travelmate.* TO `tm_connect@'%'`
+IDENTIFIED BY '$5E0sA%ra5t*0R92';
 
 COMMIT;
 
@@ -53,13 +57,13 @@ CREATE TABLE IF NOT EXISTS access (
   last_login TIMESTAMP NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS journeys(
-  id INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-  user_id INTEGER UNSIGNED NOT NULL ,
+CREATE TABLE IF NOT EXISTS journeys (
+  id           INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  user_id      INTEGER UNSIGNED NOT NULL,
   from_city_id INTEGER UNSIGNED NOT NULL,
-  to_city_id INTEGER UNSIGNED NOT NULL,
-  start_date DATE NOT NULL,
-  end_date DATE NOT NULL
+  to_city_id   INTEGER UNSIGNED NOT NULL,
+  start_date   DATE             NOT NULL,
+  end_date     DATE             NOT NULL
 );
 
 
