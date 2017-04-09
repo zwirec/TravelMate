@@ -1,0 +1,47 @@
+<% c++ #include "data/tmpl_master.h" %>
+<% skin defskin %>
+<% view Master uses Data::Master %>
+<% template page_main() %>MAIN TEMPLATE<% end %>
+<% template page_footer() %>Все права защищены<% end %>
+<% template page_left_sidebar() %>Левая панелька<% end %>
+<% template render() %>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title><%= page.title %></title>
+    <meta name="keywords" content="<%= page.keywords %>"/>
+    <meta name="description" content="<%= page.description %>"/>
+    <link href="../static/css/style.css" rel="stylesheet">
+</head>
+<body>
+<div class="wrapper">
+    <header class="header">
+        <div class="nav">
+            <% foreach menuItem in page.menuList %>
+            <ul>
+                <%=
+                <% item %>
+                <li><a href="<%= menuList.first %>"><%= menuList.second %></a></li>
+                <% end %>
+            </ul>
+            <% end %>
+        </div>
+    </header>
+    <div class="middle">
+        <div class="container">
+            <main class="content"><% include page_main() %></main>
+        </div>
+        <aside class="left-sidebar">
+            <div>
+                <% include page_left_sidebar() %>
+            </div>
+        </aside>
+    </div>
+</div>
+<footer class="footer"><% include page_footer() %></footer>
+</body>
+</html>
+<% end template %>
+<% end view %>
+<% end skin %>

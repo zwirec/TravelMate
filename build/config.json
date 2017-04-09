@@ -1,0 +1,42 @@
+{
+  "WebSite": {
+    "root": "",
+    "host": "localhost:8000",
+    "locdomain": "localhost"
+  },
+  "service": {
+    "ip": "0.0.0.0",
+    "api": "http",
+    "port": 8000
+  },
+  "http": {
+    "script": "/mb.fcgi",
+    "rewrite": [
+      {
+        "regex": "/static(/.+)",
+        "pattern": "$1"
+      },
+      {
+        "regex": ".*",
+        "pattern": "/mb.fcgi$0"
+      }
+    ]
+  },
+  "file_server": {
+    "enable": true,
+    "listing": true,
+    "document_root": "./static",
+    "alias": [
+      {
+        "url": "/static",
+        "path": "./static"
+      }
+    ]
+  },
+  "views": {
+    "default_skin": "defskin",
+    "paths": [
+      "./"
+    ]
+  }
+}
