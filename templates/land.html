@@ -1,10 +1,3 @@
-<% c++ #include "data/tmpl_master.h" %>
-<% skin defskin %>
-<% view Master uses Data::Master %>
-<% template page_main() %>MAIN TEMPLATE<% end %>
-<% template page_footer() %>Все права защищены<% end %>
-<% template page_left_sidebar() %>Левая панелька<% end %>
-<% template render() %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,16 +8,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>TravelMate</title>
+    <title>Landing Page - Start Bootstrap Theme</title>
 
-    <link href="/static/css/bootstrap.css" rel="stylesheet">
-    <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
-    <script src="../static/js/myjs.js"></script>
-    <script src="../static/js/bootstrap.min.js"></script>
+    <!-- Bootstrap Core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Custom CSS -->
     <link href="/static/css/style1.css?v=3" rel="stylesheet">
-    <link href="/static/css/loginform.css" rel="stylesheet">
 
+    <!-- Custom Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet"
           type="text/css">
 
@@ -61,24 +53,7 @@
 </nav>
 
 
-<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-     style="display: none;">
-    <div class="modal-dialog">
-        <div class="loginmodal-container">
-            <h1>Login to Your Account</h1><br>
-            <form>
-                <input type="text" name="user" placeholder="Username">
-                <input type="password" name="pass" placeholder="Password">
-                <input type="submit" name="login" class="login loginmodal-submit" value="Login">
-            </form>
-
-            <div class="login-help">
-                <a href="#">Register</a> - <a href="#">Forgot Password</a>
-            </div>
-        </div>
-    </div>
-</div>
-
+<!-- Header -->
 <a name="about"></a>
 <div class="intro-header">
     <div class="container">
@@ -91,7 +66,7 @@
                     <hr class="intro-divider">
                     <ul class="list-inline intro-social-buttons">
                         <li>
-                            <a href="#" id="btn-login" class="btn btn-default btn-lg"><i
+                            <a href="#" class="btn btn-default btn-lg"><i
                                     class="fa fa-twitter fa-fw"></i> <span class="network-name">LOGIN</span></a>
                         </li>
                         <li>
@@ -103,10 +78,11 @@
                 </div>
             </div>
         </div>
+
     </div>
+    <!-- /.container -->
+
+
 </div>
 </body>
 </html>
-<% end template %>
-<% end view %>
-<% end skin %>
