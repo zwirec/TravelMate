@@ -62,6 +62,8 @@ void WebSite::news(std::string path) {
     render("News", tmpl);
 }
 
+
+
 //-------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------
 int main(int argc, char **argv) {
@@ -72,6 +74,7 @@ int main(int argc, char **argv) {
         srv.applications_pool().mount(cppcms::applications_factory<WebSite>());
         // запускаем
         srv.run();
+
     }
     catch (std::exception const &e) {
         std::cerr << "Failed: " << e.what() << std::endl;

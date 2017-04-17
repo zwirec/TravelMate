@@ -1,8 +1,11 @@
 #ifndef TRAVELMATE_TMPL_MASTER_H
 #define TRAVELMATE_TMPL_MASTER_H
 
+
+#include <vector>
 #include <cppcms/view.h>
 #include <map>
+#include <string>
 
 namespace Data {
     //-------------------------------------------------------------------------------------
@@ -33,12 +36,17 @@ namespace Data {
     //-------------------------------------------------------------------------------------
     struct Master : public cppcms::base_content {
         infoPage page;
+        std::vector<int> vector = std::vector<int>(8);
+
+        std::vector<int>& print() {
+            return vector;
+        };
 
         //-------------------------------------------------------------------------------------
         // Dsc: Конструктор страницы
         //-------------------------------------------------------------------------------------
         Master() :
-                page() {}
+                page(){}
 
         //-------------------------------------------------------------------------------------
         // Dsc: Ленивый деструктор
