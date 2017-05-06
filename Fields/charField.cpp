@@ -11,20 +11,14 @@ namespace model {
         }
     }
 
-    charField::charField(const charField &rhs) noexcept : baseField(rhs._flags), _dataLimit(rhs._dataLimit),
+    charField::charField(const charField &rhs) noexcept : baseField("charField", rhs._flags),
+                                                          _dataLimit(rhs._dataLimit),
                                                           _data(rhs._data) {}
 
     charField::charField(const std::string &data, const size_t limit) noexcept : _dataLimit(limit), _data(data) {}
 
-    std::string &charField::value() const noexcept {
+    std::string &charField::value() noexcept {
         return _data;
-    }
-
-    charField::charField(const std::string &data, const bool isPrimaryKey, const size_t limit) : _dataLimit(limit),
-                                                                                                 _data(data) {
-        if (isPrimaryKey) {
-            setFlags(Flags::primaryKeyBit);
-        }
     }
 
     charField &charField::operator=(const charField &rhs) {
@@ -35,27 +29,31 @@ namespace model {
         return *this;
     }
 
-    bool charField::operator<(const charField &left, const charField& right) {
-        return left._data < right._data;
-    }
-
-    charField::charField(const bool null, const bool blank) : _dataLimit(MaxCharFieldLength) {
-        unsigned flags = 0;
-        if (null) {
-            flags |= Flags::nullBit;
-        }
-        if (blank) {
-            flags |= Flags::blankBit;
-        }
-        setFlags(flags);
-    }
-
-    void charField::setValue(const std::string &newValue) {
+    void charField::setValue(const std::string &newValue) noexcept {
         _data = newValue;
 
-        if(_data.size() > _dataLimit){
+        if (_data.size() > _dataLimit) {
             _data.resize(_dataLimit);
         }
+    }
+
+    charField::charField(const std::string &data, const unsigned flags, const std::string &defaultValue)
+            : baseField("charField", flags, false), _dataLimit(MaxCharFieldLength), _data(data),
+              _defaultValue(defaultValue) {
+        if (data.empty() && hasDefault()) {
+            _data = _defaultValue;
+        }
+    }
+
+    bool charField::empty() {
+        if (!_isNull || hasDefault()) {
+            return false;
+        }
+        return _data.empty();
+    }
+
+    bool charField::operator<(const charField &rhs) {
+        return _data < rhs._data;
     }
 
 

@@ -22,7 +22,7 @@ namespace model {
 
     class baseField {
     public:
-        virtual baseField() noexcept = 0;
+        baseField() noexcept = default;
 
         baseField(const std::string &type, unsigned flags = 0, bool isNull = true); //noexcept?
 
@@ -38,7 +38,9 @@ namespace model {
 
         bool canBeBlank() noexcept;
 
-        const std::string &const type() const noexcept;
+        virtual bool empty() = 0;
+
+        const std::string & type() const noexcept;
 
     protected:
         unsigned _flags:16;

@@ -18,19 +18,19 @@ namespace model {
         catch (...) {}
     }
 
-    bool baseField::isPrimaryKey() {
+    bool baseField::isPrimaryKey() noexcept {
         return (_flags & ~Flags::primaryKeyBit) != _flags;
     }
 
-    bool baseField::canBeNull() {
+    bool baseField::canBeNull()  noexcept {
         return (_flags & ~Flags::nullBit) != _flags;
     }
 
-    bool baseField::hasDefault() {
+    bool baseField::hasDefault() noexcept {
         return (_flags & ~Flags::defaultBit) != _flags;
     }
 
-    bool baseField::canBeBlank() {
+    bool baseField::canBeBlank() noexcept {
         return (_flags & ~Flags::blankBit) != _flags;
     }
 
@@ -66,10 +66,9 @@ namespace model {
         }
     }
 
-    baseField::baseField(unsigned flags, bool isNull) : _flags(flags), _isNull(isNull) {}
-
-    const std::string &const baseField::type() const {
+    const std::string &baseField::type() const noexcept {
         return _fieldType;
     }
+
 
 }

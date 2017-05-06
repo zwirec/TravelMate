@@ -19,26 +19,26 @@ namespace model {
 
         charField(const std::string &data, const std::size_t limit = MaxCharFieldLength) noexcept;
 
-        charField(const std::string &data, const bool isPrimaryKey,
-                  const std::size_t limit = MaxCharFieldLength) noexcept;
-
-        charField(const bool null, const bool blank = true);
+        charField(const std::string &data, const unsigned flags, const std::string &defaultValue = std::string());
 
         charField(const charField &rhs) noexcept;
 
         ~charField() noexcept = default;
 
-        std::string &value() const noexcept;
+        std::string &value() noexcept;
 
-        void setValue(const std::string& newValue) noexcept;
+        void setValue(const std::string &newValue) noexcept;
 
         charField &operator=(const charField &rhs);
 
-        bool operator<(const charField& left, const charField& right);
+        bool operator<(const charField &rhs);
+
+        bool empty() override;
 
     private:
         std::size_t _dataLimit;
         std::string _data;
+        std::string _defaultValue;
     };
 }
 

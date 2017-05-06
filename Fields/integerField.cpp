@@ -15,10 +15,6 @@ integerField &integerField::operator=(const integerField &rhs) {
     return *this;
 }
 
-bool integerField::operator<(const integerField &left, const integerField &right) {
-    return left._value < right._value;
-}
-
 const int &integerField::value() const noexcept {
     return _value;
 }
@@ -37,3 +33,12 @@ integerField::integerField(const int value, const unsigned flags)
 
 integerField::integerField(const int value, const unsigned flags, const int defaultValue)
         : baseField("integerField", flags, false), _value(value), _defaultValue(defaultValue) {}
+
+bool integerField::operator<(const integerField &rhs) {
+    return _value < rhs._value;
+}
+
+bool integerField::empty() {
+
+    return _isNull || hasDefault();
+}

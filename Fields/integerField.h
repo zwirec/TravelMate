@@ -29,7 +29,9 @@ public:
 
     integerField &operator=(const integerField &rhs);
 
-    bool operator<(const integerField &left, const integerField &right);
+    bool operator<(const integerField &rhs);
+
+    bool empty() override;
 
 private:
     int _value;
