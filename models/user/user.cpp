@@ -28,11 +28,11 @@ model::user::user(const model::user &rhs) : basicModel(rhs._id.value(), UserMode
 }
 
 
-const std::string &model::user::getLogin() {
+std::string &model::user::getLogin(){
     return _login.value();
 }
 
-const std::string &model::user::getEmail() {
+std::string &model::user::getEmail() {
     return _email.value();
 }
 
@@ -58,4 +58,8 @@ void model::user::setPassword(const std::string &password) {
 
 void model::user::setPassword(const model::charField &password) {
     _password = password;
+}
+
+std::string &model::user::getPassword()  {
+    return _password.value();
 }

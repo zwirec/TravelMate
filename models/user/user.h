@@ -5,14 +5,14 @@
 #ifndef BASICMODEL_USER_H
 #define BASICMODEL_USER_H
 
-#include "../Fields/charField.h"
-#include "../Fields/integerField.h"
-#include "basicModel.h"
+#include "../../Fields/charField.h"
+#include "../../Fields/integerField.h"
+#include "../basicModel.h"
 
 #define SALT "LALALALA"
 
 namespace model {
-    class user : public basicModel{
+    class user : public basicModel {
     public:
         user();
 
@@ -22,9 +22,9 @@ namespace model {
 
         user(const user &);
 
-        const std::string &getLogin();
+        std::string &getLogin() ;
 
-        const std::string &getEmail();
+        std::string &getEmail();
 
         void setEmail(const std::string &email);
 
@@ -33,6 +33,8 @@ namespace model {
 //        void setLogin(const charField &login);
 
         void setLogin(const std::string &login);
+
+        std::string &getPassword() ;
 
         void setPassword(const std::string &password);
 
