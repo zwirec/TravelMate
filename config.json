@@ -41,7 +41,7 @@
   "views": {
     "default_skin": "defskin",
     "paths": [
-      "./"
+      "./build"
     ],
     "auto_reload": true
   }

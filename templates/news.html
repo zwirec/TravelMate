@@ -1,0 +1,52 @@
+<% c++ #include "data/tmpl_news.h" %>
+<% skin defskin %>
+<% view News uses Data::News extends Master %>
+<% template page_main() %>
+<div class="container-fluid">
+    <form class="form-horizontal" role="form">
+        <div class="form-group form-group-lg">
+            <div class="col-md-3 col-md-offset-2">
+                <select id="basic" class="selectpicker form-control" data-live-search="true"
+                        title="Куда...">
+                    <optgroup label="Russia">
+                        <option>Moscow</option>
+                        <option>Ryazan</option>
+                        <option>Saint-Petersburg</option>
+                        <option>Tula</option>
+                    </optgroup>
+                    <optgroup label="USA">
+                        <option>New York</option>
+                        <option>Orlando</option>
+                        <option>Chicago</option>
+                        <option>Los Angeles</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group date">
+                    <input id='datetimepicker3' type="text" class="form-control" placeholder="Когда..."/>
+                    <span class="input-group-addon">
+      <span class="glyphicon glyphicon-calendar"></span>
+    </span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-danger btn-lg form-control">Lets Go</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    $(function () {
+        $('#datetimepicker3').daterangepicker({
+            "singleDatePicker": true,
+            "autoUpdateInput": false
+        });
+    });
+    $('#datetimepicker3').on('apply.daterangepicker', function (ev, picker) {
+        $(this).val(picker.startDate.format('MM.DD.YYYY'));
+    });
+</script>
+<% end %>
+<% end view %>
+<% end skin %>

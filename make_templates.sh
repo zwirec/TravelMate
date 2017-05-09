@@ -27,11 +27,11 @@ cp $INPUT/config.json $OUTPUT
 cp -R $INPUT/static $OUTPUT
 
 # сюда пишем все шаблоны
-TEMPLATES="$INPUT/templates/master.tmpl"
-TEMPLATES="$TEMPLATES $INPUT/templates/news.tmpl"
+TEMPLATES="$INPUT/templates/master.html"
+TEMPLATES="$TEMPLATES $INPUT/templates/news.html"
 
 # прожевываем шаблоны в срр-шник
 cppcms_tmpl_cc $TEMPLATES -o $INPUT/all_tmpl.cpp
 
 # собираем шаблоны в библиотеку
-g++ -shared -fPIC -DPIC $INPUT/all_tmpl.cpp -o $OUTPUT/libcpp_defskin.so -lcppcms -lbooster
+g++ -std=c++11 -shared -fPIC -DPIC $INPUT/all_tmpl.cpp -o $OUTPUT/libcpp_defskin.so -lcppcms -lbooster
