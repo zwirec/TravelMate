@@ -39,8 +39,8 @@ CREATE TABLE IF NOT EXISTS native_language (
 
 CREATE TABLE IF NOT EXISTS user (
   id          INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-  login       CHAR(30) NOT NULL,
-  password    BLOB     NOT NULL,
+  login       CHAR(30) UNIQUE NOT NULL,
+  password    char(73) NOT NULL,
   user_avatar CHAR(30) NOT NULL            DEFAULT 'default_avatar'
 );
 
