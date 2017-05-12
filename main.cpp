@@ -5,28 +5,25 @@
 #include <cppcms/service.h>
 #include "data/tmpl_master.h"
 #include "data/tmpl_news.h"
+#include "models/dbConfig.h"
+#include "managers.h"
 
-//-------------------------------------------------------------------------------------
-// Dsc: Наш класс отрисовки страниц, при запросе некоторого адреса пользователем
-//      В первую очередь он попадет сюда
-//-------------------------------------------------------------------------------------
+
 class WebSite : public cppcms::application {
+private:
+
 public:
-    //-------------------------------------------------------------------------------------
-    // Dsc: Конструктор, который будет запушен во время старта программы
-    //-------------------------------------------------------------------------------------
+
     WebSite(cppcms::service &s) : cppcms::application(s) {
         dispatcher().assign("/news(.*)", &WebSite::news, this, 1);
         mapper().assign("news", "/news");
 
         dispatcher().assign("(/?)", &WebSite::master, this, 1);
         mapper().assign("master", "/");
+
+
     }
 
-    //-------------------------------------------------------------------------------------
-    // Dsc: Функция в которую мы попадем, если иного не указано в конструкторе
-    //      ( об этом позже )
-    //-------------------------------------------------------------------------------------
     virtual void main(std::string path) {
         cppcms::application::main(path);
     };
@@ -43,29 +40,23 @@ public:
 
 void WebSite::master(std::string path) {
     Data::Master tmpl;
-    tmpl.page.title = path;
-    tmpl.page.description = "description";
-    tmpl.page.keywords = "keywords";
-    tmpl.page.menuList["/news"] = std::string("NEWS");
-    tmpl.page.menuList["/else"] = std::string("ELSE");
+
     render("Master", tmpl);
 }
 
 void WebSite::news(std::string path) {
-    Data::News tmpl;
-    tmpl.page.title = path;
-    tmpl.page.description = "description";
-    tmpl.page.keywords = "keywords";
-    tmpl.page.menuList["/"] = std::string("MASTER");
-    tmpl.page.menuList["/news"] = std::string("NEWS");
-    tmpl.mainNews = "Сенсация! У нас на сайте ничего не произошло!";
+    Data::Master tmpl;
+    std::string username = request().post("username");
+    std::string password = request().post("password");
+    model::managers dispatcher;
+    auto um = dispatcher.getManager<users>();
+    um.authenticate("bla", "bla");
     render("News", tmpl);
 }
 
 
 
-//-------------------------------------------------------------------------------------
-//-------------------------------------------------------------------------------------
+
 int main(int argc, char **argv) {
     try {
         // создаем сервис
@@ -74,7 +65,6 @@ int main(int argc, char **argv) {
         srv.applications_pool().mount(cppcms::applications_factory<WebSite>());
         // запускаем
         srv.run();
-
     }
     catch (std::exception const &e) {
         std::cerr << "Failed: " << e.what() << std::endl;

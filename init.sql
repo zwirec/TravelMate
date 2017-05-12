@@ -2,7 +2,7 @@ CREATE DATABASE IF NOT EXISTS travelmate;
 
 START TRANSACTION;
 
-CREATE USER IF NOT EXISTS tm_connect@'localhost'
+CREATE USER IF NOT EXISTS tm_connect@'127.0.0.1'
   IDENTIFIED BY '$5E0sA%ra5t*0R92';
 GRANT ALL ON travelmate.* TO `tm_connect@'localhost'`
 IDENTIFIED BY '$5E0sA%ra5t*0R92';
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS native_language (
 CREATE TABLE IF NOT EXISTS user (
   id          INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   login       CHAR(30) NOT NULL,
-  password    BLOB     NOT NULL,
+  password    CHAR(30) NOT NULL,
   user_avatar CHAR(30) NOT NULL            DEFAULT 'default_avatar'
 );
 

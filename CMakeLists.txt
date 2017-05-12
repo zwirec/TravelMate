@@ -2,10 +2,14 @@ cmake_minimum_required(VERSION 3.6)
 project(TravelMateProject)
 
 set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wno-long-long -pedantic -I/usr/local/include/mysql -I/usr/local/include/mysql++ -L./build")
 
-find_library(Booster Boster)
-find_library(cppcms CPPCMS)
-set(SOURCE_FILES main.cpp )
+set(SOURCE_FILES main.cpp data/tmpl_master.h data/tmpl_news.h models/basicModel.cpp models/basicModel.h Fields/charField.cpp Fields/charField.h Fields/baseField.cpp Fields/baseField.h Fields/integerField.cpp Fields/integerField.h Fields/byteField.cpp Fields/byteField.h models/dbConfig.h  models/baseManager.cpp models/baseManager.h models/tableModels.h models/tableModel.cpp)
 
 add_executable(TravelMateProject ${SOURCE_FILES})
-target_link_libraries(TravelMateProject ${Booster_LIBRARY} ${CPPCMS_LIBRARY})
+
+target_link_libraries(TravelMateProject mysqlpp)
+target_link_libraries(TravelMateProject mysqlclient)
+target_link_libraries(TravelMateProject booster)
+target_link_libraries(TravelMateProject cppcms)
+target_link_libraries(TravelMateProject cpp_defskin)

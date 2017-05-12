@@ -22,7 +22,7 @@ namespace defskin {
 		} // end of template page_footer
 		#line 5 "./templates/master.html"
 		virtual void page_main() {
-			#line 13 "./templates/master.html"
+			#line 26 "./templates/master.html"
 			out()<<"\n"
 				"<div class=\"row\">\n"
 				"    <div class=\"col-lg-12\">\n"
@@ -31,57 +31,31 @@ namespace defskin {
 				"            <h3>Your personal Travel Mate</h3>\n"
 				"            <hr class=\"intro-divider\">\n"
 				"            <ul class=\"list-inline intro-social-buttons\">\n"
-				"                ";
-			#line 13 "./templates/master.html"
-			if((content.print()).begin()!=(content.print()).end()) {
-				#line 14 "./templates/master.html"
-				out()<<"\n"
-					"                ";
-				#line 14 "./templates/master.html"
-				for(CPPCMS_TYPEOF((content.print()).begin()) num_ptr=(content.print()).begin(),num_ptr_end=(content.print()).end();num_ptr!=num_ptr_end;++num_ptr) {
-				#line 14 "./templates/master.html"
-				CPPCMS_TYPEOF(*num_ptr) &num=*num_ptr;
-					#line 17 "./templates/master.html"
-					out()<<"\n"
-						"                <li>\n"
-						"                    <a href=\"#\" id=\"btn-login\" class=\"btn btn-default btn-lg\"><i\n"
-						"                            class=\"fa fa-twitter fa-fw\"></i> <span class=\"network-name\">";
-					#line 17 "./templates/master.html"
-					out()<<cppcms::filters::escape(num);
-					#line 19 "./templates/master.html"
-					out()<<"</span></a>\n"
-						"                </li>\n"
-						"                ";
-				#line 19 "./templates/master.html"
-				} // end of item
-				#line 20 "./templates/master.html"
-				out()<<"\n"
-					"                ";
-			#line 20 "./templates/master.html"
-			}
-			#line 30 "./templates/master.html"
-			out()<<"\n"
 				"                <li>\n"
-				"                    <a href=\"/\"\n"
+				"                    <a href=\"#\" id=\"btn-login\" class=\"btn btn-default btn-lg\"><i\n"
+				"                            class=\"fa fa-twitter fa-fw\"></i> <span class=\"network-name\">LOGIN</span></a>\n"
+				"                </li>\n"
+				"                <li>\n"
+				"                    <a href=\"news/\"\n"
 				"                       class=\"btn btn-default btn-lg\"><i class=\"fa fa-github fa-fw\"></i> <span\n"
-				"                            class=\"network-name\">LETS O!</span></a>\n"
+				"                            class=\"network-name\">LETS GO!</span></a>\n"
 				"                </li>\n"
 				"            </ul>\n"
 				"        </div>\n"
 				"    </div>\n"
 				"</div>\n"
 				"";
-		#line 30 "./templates/master.html"
+		#line 26 "./templates/master.html"
 		} // end of template page_main
-		#line 32 "./templates/master.html"
+		#line 28 "./templates/master.html"
 		virtual void page_left_sidebar() {
-			#line 32 "./templates/master.html"
+			#line 28 "./templates/master.html"
 			out()<<"Левая панелька";
-		#line 32 "./templates/master.html"
+		#line 28 "./templates/master.html"
 		} // end of template page_left_sidebar
-		#line 33 "./templates/master.html"
+		#line 29 "./templates/master.html"
 		virtual void render() {
-			#line 141 "./templates/master.html"
+			#line 143 "./templates/master.html"
 			out()<<"\n"
 				"<!DOCTYPE html>\n"
 				"<html lang=\"en\">\n"
@@ -105,7 +79,7 @@ namespace defskin {
 				"\n"
 				"\n"
 				"    <link href=\"../static/css/bootstrap.css\" rel=\"stylesheet\">\n"
-				"    <script src=\"../static/js/myjs.js\"></script>\n"
+				"\n"
 				"\n"
 				"    <!--//<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js\"></script>-->\n"
 				"\n"
@@ -125,7 +99,7 @@ namespace defskin {
 				"\n"
 				"\n"
 				"    <link href=\"https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic\" rel=\"stylesheet\"\n"
-				"    type=\"text/css\">\n"
+				"          type=\"text/css\">\n"
 				"\n"
 				"    <script src=\"//cdn.jsdelivr.net/momentjs/latest/moment.min.js\"></script>\n"
 				"    <link rel=\"stylesheet\" type=\"text/css\" href=\"//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css\"/>\n"
@@ -133,7 +107,7 @@ namespace defskin {
 				"    <!-- Include Date Range Picker -->\n"
 				"    <script type=\"text/javascript\" src=\"//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js\"></script>\n"
 				"    <link rel=\"stylesheet\" type=\"text/css\" href=\"//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css\"/>\n"
-				"\n"
+				"    <script src=\"../static/js/myjs.js\"></script>\n"
 				"</head>\n"
 				"\n"
 				"<body>\n"
@@ -173,14 +147,20 @@ namespace defskin {
 				"    <div class=\"modal-dialog\">\n"
 				"        <div class=\"loginmodal-container\">\n"
 				"            <h1>Login to Your Account</h1><br>\n"
-				"            <form>\n"
+				"            <form name=\"login\" method=\"post\" action=\"/login\">\n"
 				"                <input type=\"text\" name=\"user\" placeholder=\"Username\">\n"
 				"                <input type=\"password\" name=\"pass\" placeholder=\"Password\">\n"
 				"                <input type=\"submit\" name=\"login\" class=\"login loginmodal-submit\" value=\"Login\">\n"
 				"            </form>\n"
-				"\n"
 				"            <div class=\"login-help\">\n"
-				"                <a href=\"#\">Register</a> - <a href=\"#\">Forgot Password</a>\n"
+				"                <a id=\"register\" href=\"#\">Register</a> - <a href=\"#\">Forgot Password</a>\n"
+				"            </div>\n"
+				"            <div id=\"signup\" style=\"display:none\"><br>\n"
+				"                <form name=\"signup\" method=\"post\" action=\"/signup\">\n"
+				"                    <input type=\"email\" name=\"email\" placeholder=\"email\">\n"
+				"                    <input type=\"password\" name=\"pass\" placeholder=\"password\">\n"
+				"                    <input type=\"submit\" name=\"login\" class=\"login loginmodal-submit btn btn-lg btn-success\" value=\"SignUp\">\n"
+				"                </form>\n"
 				"            </div>\n"
 				"        </div>\n"
 				"    </div>\n"
@@ -191,9 +171,9 @@ namespace defskin {
 				"    <div class=\"container\">\n"
 				"\n"
 				"        ";
-			#line 141 "./templates/master.html"
+			#line 143 "./templates/master.html"
 			page_main();
-			#line 147 "./templates/master.html"
+			#line 149 "./templates/master.html"
 			out()<<"\n"
 				"\n"
 				"    </div>\n"
@@ -201,11 +181,11 @@ namespace defskin {
 				"</body>\n"
 				"</html>\n"
 				"";
-		#line 147 "./templates/master.html"
+		#line 149 "./templates/master.html"
 		} // end of template render
-	#line 148 "./templates/master.html"
+	#line 150 "./templates/master.html"
 	}; // end of class Master
-#line 149 "./templates/master.html"
+#line 151 "./templates/master.html"
 } // end of namespace defskin
 #line 1 "./templates/news.html"
 #include "data/tmpl_news.h" 
@@ -264,7 +244,7 @@ namespace defskin {
 				"<script>\n"
 				"    $(function () {\n"
 				"        $('#datetimepicker3').daterangepicker({\n"
-				"            \"singleDatePicker\": true,\n"
+				"            //\"singleDatePicker\": true,\n"
 				"            \"autoUpdateInput\": false\n"
 				"        });\n"
 				"    });\n"

@@ -8,4 +8,11 @@ $(document).ready(function () {
     });
 });
 
+$(document).ready(function () {
+    $('#register').click(function () {
+        $('#signup').fadeIn(1000);
+    });
+});
+
+
 
