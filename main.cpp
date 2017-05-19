@@ -5,6 +5,7 @@
 #include <cppcms/service.h>
 #include "data/tmpl_master.h"
 #include "data/tmpl_news.h"
+#include "managers/managers.h"
 
 //-------------------------------------------------------------------------------------
 // Dsc: Наш класс отрисовки страниц, при запросе некоторого адреса пользователем
@@ -27,39 +28,49 @@ public:
     // Dsc: Функция в которую мы попадем, если иного не указано в конструкторе
     //      ( об этом позже )
     //-------------------------------------------------------------------------------------
-    virtual void main(std::string path) {
+    virtual void main(std::string& path) {
         cppcms::application::main(path);
     };
 
-    virtual void master(std::string path);
+    virtual void master(std::string& path);
 
-    virtual void news(std::string path);
+    virtual void news(std::string& path);
 
-    void print() {
-        std::cout << "Hello" << std::endl;
-    }
 };
 
 
-void WebSite::master(std::string path) {
+void WebSite::master(std::string& path) {
     Data::Master tmpl;
-    tmpl.page.title = path;
-    tmpl.page.description = "description";
-    tmpl.page.keywords = "keywords";
-    tmpl.page.menuList["/news"] = std::string("NEWS");
-    tmpl.page.menuList["/else"] = std::string("ELSE");
+
+    if (session().is_set("USERNAME")) {
+        std::cout << "YEAH" << std::endl;
+    }
+    session().set("USERNAME", "BLABLA");
+    session().expose("USERNAME", true);
+    model::managers dispatcher;
+    auto um = dispatcher.getManager<model::UserModel>();
+    std::cout << "HELLO" << std::endl;
+    std::cout << um.authenticate("bla", "bla") << std::endl;
     render("Master", tmpl);
 }
 
-void WebSite::news(std::string path) {
+void WebSite::news(std::string& path) {
     Data::News tmpl;
+    cppcms::json::value my_object;
+    std::vector<int> a = {1, 2, 3};
+    my_object["name"] = "igor";
+    my_object["age"] = 1;
+    my_object["vector"] = a;
+    std::cout << my_object["age"] << std::endl;
+    my_object.save(std::cout);
     tmpl.page.title = path;
     tmpl.page.description = "description";
     tmpl.page.keywords = "keywords";
     tmpl.page.menuList["/"] = std::string("MASTER");
     tmpl.page.menuList["/news"] = std::string("NEWS");
     tmpl.mainNews = "Сенсация! У нас на сайте ничего не произошло!";
-    render("News", tmpl);
+    response().content_type("utf-8");
+    response().out() << my_object;
 }
 
 

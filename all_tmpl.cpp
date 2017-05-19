@@ -22,7 +22,7 @@ namespace defskin {
 		} // end of template page_footer
 		#line 5 "./templates/master.html"
 		virtual void page_main() {
-			#line 13 "./templates/master.html"
+			#line 27 "./templates/master.html"
 			out()<<"\n"
 				"<div class=\"row\">\n"
 				"    <div class=\"col-lg-12\">\n"
@@ -31,36 +31,11 @@ namespace defskin {
 				"            <h3>Your personal Travel Mate</h3>\n"
 				"            <hr class=\"intro-divider\">\n"
 				"            <ul class=\"list-inline intro-social-buttons\">\n"
-				"                ";
-			#line 13 "./templates/master.html"
-			if((content.print()).begin()!=(content.print()).end()) {
-				#line 14 "./templates/master.html"
-				out()<<"\n"
-					"                ";
-				#line 14 "./templates/master.html"
-				for(CPPCMS_TYPEOF((content.print()).begin()) num_ptr=(content.print()).begin(),num_ptr_end=(content.print()).end();num_ptr!=num_ptr_end;++num_ptr) {
-				#line 14 "./templates/master.html"
-				CPPCMS_TYPEOF(*num_ptr) &num=*num_ptr;
-					#line 17 "./templates/master.html"
-					out()<<"\n"
-						"                <li>\n"
-						"                    <a href=\"#\" id=\"btn-login\" class=\"btn btn-default btn-lg\"><i\n"
-						"                            class=\"fa fa-twitter fa-fw\"></i> <span class=\"network-name\">";
-					#line 17 "./templates/master.html"
-					out()<<cppcms::filters::escape(num);
-					#line 19 "./templates/master.html"
-					out()<<"</span></a>\n"
-						"                </li>\n"
-						"                ";
-				#line 19 "./templates/master.html"
-				} // end of item
-				#line 20 "./templates/master.html"
-				out()<<"\n"
-					"                ";
-			#line 20 "./templates/master.html"
-			}
-			#line 30 "./templates/master.html"
-			out()<<"\n"
+				"\n"
+				"                <li>\n"
+				"                    <a href=\"#\" id=\"btn-login\" class=\"btn btn-default btn-lg\"><i\n"
+				"                            class=\"fa fa-twitter fa-fw\"></i> <span class=\"network-name\">LOGIN</span></a>\n"
+				"                </li>\n"
 				"                <li>\n"
 				"                    <a href=\"/\"\n"
 				"                       class=\"btn btn-default btn-lg\"><i class=\"fa fa-github fa-fw\"></i> <span\n"
@@ -71,17 +46,17 @@ namespace defskin {
 				"    </div>\n"
 				"</div>\n"
 				"";
-		#line 30 "./templates/master.html"
+		#line 27 "./templates/master.html"
 		} // end of template page_main
-		#line 32 "./templates/master.html"
+		#line 29 "./templates/master.html"
 		virtual void page_left_sidebar() {
-			#line 32 "./templates/master.html"
+			#line 29 "./templates/master.html"
 			out()<<"Левая панелька";
-		#line 32 "./templates/master.html"
+		#line 29 "./templates/master.html"
 		} // end of template page_left_sidebar
-		#line 33 "./templates/master.html"
+		#line 30 "./templates/master.html"
 		virtual void render() {
-			#line 141 "./templates/master.html"
+			#line 138 "./templates/master.html"
 			out()<<"\n"
 				"<!DOCTYPE html>\n"
 				"<html lang=\"en\">\n"
@@ -191,9 +166,9 @@ namespace defskin {
 				"    <div class=\"container\">\n"
 				"\n"
 				"        ";
-			#line 141 "./templates/master.html"
+			#line 138 "./templates/master.html"
 			page_main();
-			#line 147 "./templates/master.html"
+			#line 144 "./templates/master.html"
 			out()<<"\n"
 				"\n"
 				"    </div>\n"
@@ -201,11 +176,11 @@ namespace defskin {
 				"</body>\n"
 				"</html>\n"
 				"";
-		#line 147 "./templates/master.html"
+		#line 144 "./templates/master.html"
 		} // end of template render
-	#line 148 "./templates/master.html"
+	#line 145 "./templates/master.html"
 	}; // end of class Master
-#line 149 "./templates/master.html"
+#line 146 "./templates/master.html"
 } // end of namespace defskin
 #line 1 "./templates/news.html"
 #include "data/tmpl_news.h" 

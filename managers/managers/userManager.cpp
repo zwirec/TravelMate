@@ -7,7 +7,7 @@
 struct loginEquality {
     loginEquality(const std::string &Login) : login(Login) {}
 
-    bool operator()(const model::UserModel &user) {
+    bool operator()(const model::UserModel &user) const {
         return user.login == login;
     }
 
@@ -33,8 +33,6 @@ namespace model {
         if (!_res.empty()) {
             if (_res.size() == 1) {
                 return _res[0].password == attempt.password;
-            } else {
-                throw std::runtime_error("База говно. Логины могут повторяться, что быть не должно");
             }
         } else {
 //            throw std::runtime_error("login not found");
@@ -54,7 +52,7 @@ namespace model {
             if (_res.size() == 1) {
                 return _res[0].password == user.password;
             } else {
-                throw std::runtime_error("База говно. Логины могут повторяться, что быть не должно");
+                throw std::runtime_error("Duplicate login!");
             }
         } else {
 //            throw std::runtime_error("login not found");

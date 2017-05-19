@@ -22,7 +22,7 @@ namespace model {
         ~managers();
 
         template<class ModelName>
-        manager<ModelName> getManager() {
+        manager<ModelName> getManager() const {
             return manager<ModelName>(_con);
         }
 

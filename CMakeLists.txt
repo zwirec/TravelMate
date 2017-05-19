@@ -2,10 +2,11 @@ cmake_minimum_required(VERSION 3.5.2)
 project(TravelMateProject)
 
 set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wno-long-long -pedantic -I/usr/local/include/mysql -I/usr/local/include/mysql++ -L./build")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wno-long-long -pedantic -I/usr/local/include/mysql -I/usr/local/include/mysql++ -L../build ")
 
 set(SOURCE_FILES 
-main.cpp 
+main.cpp
+        all_tmpl.cpp
 data/tmpl_master.h 
 data/tmpl_news.h 
 managers/managers.cpp 
@@ -13,12 +14,10 @@ managers/managers.h
 managers/utils/dbConfig.cpp 
 managers/utils/dbConfig.h 
 managers/managers/manager.cpp 
-managers/managers/manager.h 
-managers/models/tableModels.h 
-managers/managers/userManager.cpp 
-managers/managers/userManager.h 
-managers/models/tableModel.cpp 
-managers/models/user/UserModel.cpp 
+managers/managers/manager.h
+        managers/managers/userManager.cpp
+managers/managers/userManager.h
+        managers/models/user/UserModel.cpp
 managers/models/user/UserModel.h 
 managers/models/user/userPrototype.h 
 managers/models/user/cypher/sha256.cpp 

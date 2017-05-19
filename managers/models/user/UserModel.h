@@ -12,10 +12,11 @@ namespace model {
     public:
         UserModel();
 
-        UserModel(const mysqlpp::Null<mysqlpp::sql_int> &_a, const mysqlpp::sql_char &_b);
+        UserModel(const mysqlpp::Null<mysqlpp::sql_int> &_username, const mysqlpp::sql_char &_password);
 
-        UserModel(const mysqlpp::Null<mysqlpp::sql_int> &_a, const mysqlpp::sql_char &_b, const mysqlpp::sql_char &_c,
-                  const mysqlpp::Null<mysqlpp::sql_char> &_d);
+        UserModel(const mysqlpp::Null<mysqlpp::sql_int> &_id, const mysqlpp::sql_char &_username,
+                  const mysqlpp::sql_char &_password,
+                  const mysqlpp::Null<mysqlpp::sql_char> &_avatar_path);
 
         UserModel(const mysqlpp::Row &row);
 

@@ -12,7 +12,7 @@ namespace config {
         ~dbConfig() = default;
 
         std::string databaseName = "travelmate";
-        std::string databaseHost = "192.168.1.105";
+        std::string databaseHost = "127.0.0.1";
         std::string databaseUser = "tm_connect";
         std::string userPassword = "$5E0sA%ra5t*0R92";
     };
